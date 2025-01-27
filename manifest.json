@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Fire Drill",
+  "version": "1.0",
+  "description": "Periodic fire drills in Microsoft Edge for training purposes.",
+  "permissions": [
+    "alarms"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+    "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

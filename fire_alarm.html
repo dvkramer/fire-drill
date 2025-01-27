@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FIRE DRILL</title>
+<script src="fire_alarm.js"></script>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  transform: translateY(-10%); /* Shift content up by 10% of viewport height */
+  background-color: red;
+  color: white;
+  font-size: 5em; /* Keep the main text size */
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  flex-direction: column; /* Arrange header and main text vertically */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  animation: flash 0.5s infinite alternate;
+  font-family: sans-serif;
+}
+
+@keyframes flash {
+  from { background-color: red; color: white; }
+  to { background-color: white; color: red; }
+}
+
+h2 { /* Style for the FIRE DRILL header */
+  font-size: 2em; /* REALLY BIG font size for the header */
+  margin-bottom: 0.5em; /* Add some space below the header */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional: Add a slight shadow for emphasis */
+}
+</style>
+</head>
+<body>
+  <h2>FIRE DRILL</h2>  <!-- BIG HEADER TEXT ADDED HERE -->
+
+  THIS IS A FIRE DRILL. YOU MUST EVACUATE FOR 15 MINUTES.<br><br>
+  THIS WINDOW CANNOT BE CLOSED UNTIL THE DRILL IS OVER.
+  <audio id="fireAlarmSound" src="fire_alarm.mp3" loop></audio>
+
+</body>
+</html>
