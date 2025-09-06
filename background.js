@@ -1,10 +1,11 @@
-// FOR TESTING: Set a very short time to trigger the drill quickly.
-const MTTH_HOURS = 0.0001; // Average time is now a fraction of a second.
-// FOR TESTING: Set a very short drill duration.
-const ALARM_DURATION_MINUTES = 0.1; // Drill will last for 6 seconds.
+// FOR PRODUCTION: Set the mean time to happen to 1 week (168 hours).
+const MTTH_HOURS = 168;
+// FOR PRODUCTION: Set the drill duration to 15 minutes.
+const ALARM_DURATION_MINUTES = 15;
 
 const ALARM_NAME = "fireAlarmDrill";
 const DRILL_PAGE_URL = "fire_alarm.html";
+const TEMP_ALARM_NAME = "notificationTimeout";
 
 // Keep track of the drill window and the timeout
 let drillWindowId = null;
@@ -56,21 +57,34 @@ function askUserToStartDrill() {
       title: 'Fire Drill',
       message: 'It is fire drill time!',
       buttons: [
-          { title: 'yes, dear' },
-          { title: 'not right now please' }
+          { title: 'Yes, dear' },
+          { title: 'Not right now, please' }
       ],
       requireInteraction: true
   });
+  
+  // Set a temporary alarm for 60 seconds in the future.
+  // If the user doesn't respond, this alarm will trigger.
+  chrome.alarms.create(TEMP_ALARM_NAME, { delayInMinutes: 1 });
 }
 
 chrome.alarms.onAlarm.addListener(function(alarm) {
   if (alarm.name === ALARM_NAME) {
     askUserToStartDrill();
+  } else if (alarm.name === TEMP_ALARM_NAME) {
+    // If this alarm fires, it means the user ignored the notification.
+    console.log("User ignored the notification. Rescheduling.");
+    scheduleNextAlarm();
+    // Clear the notification so it doesn't linger.
+    chrome.notifications.clear('fireDrillPrompt');
   }
 });
 
 chrome.notifications.onButtonClicked.addListener((notificationId, buttonIndex) => {
     if (notificationId === 'fireDrillPrompt') {
+        // The user responded, so we can clear the temporary timeout alarm.
+        chrome.alarms.clear(TEMP_ALARM_NAME);
+        
         if (buttonIndex === 0) { // User clicked "yes, dear"
             startFireDrill();
         } else { // User clicked "not right now please"
@@ -95,4 +109,3 @@ chrome.windows.onRemoved.addListener((windowId) => {
 
 // Schedule the very first alarm when the extension is installed/started.
 scheduleNextAlarm();
-
