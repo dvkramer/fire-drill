@@ -6,7 +6,7 @@
 ## Features  
 - **Surprise Drills:** Initiates a random fire drill approximately once a week.  
 - **Realistic Simulation:** Opens a fullscreen tab with a flashing red screen and a fire alarm sound to mimic a real fire emergency.  
-- **Commitment to Safety:** The simulation cannot be closed for 15 minutes, encouraging users to engage fully with the practice session.  
+- **Commitment to Safety:** To comply with Microsoft Edge store guidelines, this branch of the extension prioritizes the user's safety and well-being above all else. The extension asks for permission before triggering the audiovisual experience of the drill.
 
 ## Why Fire Drill?  
 Most people overlook the importance of practicing their home fire escape plan, but when seconds count, preparation can save lives. **Fire Drill** ensures that you don’t just think about safety—you act on it.  
