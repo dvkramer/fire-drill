@@ -12,7 +12,7 @@
 Most people overlook the importance of practicing their home fire escape plan, but when seconds count, preparation can save lives. **Fire Drill** ensures that you don’t just think about safety—you act on it.  
 
 ## Installation  
-The extension is pending review on the Microsoft Edge Add-ons Store. In the meantime, you can download and install it directly from this repository.  
+The extension was rejected from the Microsoft Edge Add-ons Store. We are pending review right now for a "safe" version of the extension, or alternatively you can download it directly from this repository and manually load it in Edge.  
 
 ## How to Use  
 1. Install **Fire Drill** on your Microsoft Edge browser.  
