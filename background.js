@@ -107,11 +107,11 @@ chrome.windows.onRemoved.addListener((windowId) => {
   }
 });
 
-// On first install, schedule a drill to occur in 5 seconds.
+// On first install, trigger a drill prompt in 5 seconds.
 chrome.runtime.onInstalled.addListener(function(details) {
     if (details.reason === "install") {
-        console.log("First install detected. Scheduling a drill in 5 seconds.");
-        setTimeout(startFireDrill, 5000);
+        console.log("First install detected. Prompting for a drill in 5 seconds.");
+        setTimeout(askUserToStartDrill, 5000);
     }
 });
 
