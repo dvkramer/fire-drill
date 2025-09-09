@@ -107,5 +107,13 @@ chrome.windows.onRemoved.addListener((windowId) => {
   }
 });
 
+// On first install, trigger a drill prompt in 5 seconds.
+chrome.runtime.onInstalled.addListener(function(details) {
+    if (details.reason === "install") {
+        console.log("First install detected. Prompting for a drill in 5 seconds.");
+        setTimeout(askUserToStartDrill, 5000);
+    }
+});
+
 // Schedule the very first alarm when the extension is installed/started.
 scheduleNextAlarm();
